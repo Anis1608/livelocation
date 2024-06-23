@@ -1,0 +1,16 @@
+{
+  "name": "livelocation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "build": "npm install && npm install --prefix frontend && npm run build ---prefix frontend"
+  },
+  "author": "anis",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5"
+  }
+}
