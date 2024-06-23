@@ -8,7 +8,7 @@ function App() {
     useEffect(() => {
         const fetchLocation = async () => {
             try {
-                const response = await fetch('http://localhost:5000/location'); // Update this to your Render backend URL
+                const response = await fetch('https://livelocation-1.onrender.com/location'); // Update this to your Render backend URL
                 const data = await response.json();
                 setLocation(data);
             } catch (err) {
