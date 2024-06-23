@@ -17,7 +17,12 @@ app.get('/location', async (req, res) => {
         const data = await response.json();
         console.log('Data received from Google Maps API:', data);
         const location = data.location;
-        res.json(location);
+
+        // Construct the Google Maps URL with the coordinates
+        const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${location.lat},${location.lng}`;
+        
+        // Redirect to Google Maps with the coordinates
+        res.redirect(googleMapsUrl);
     } catch (error) {
         console.error('Error fetching location:', error);
         res.status(500).json({ error: 'Failed to fetch location' });
