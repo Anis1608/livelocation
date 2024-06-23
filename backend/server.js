@@ -13,16 +13,17 @@ app.use(cors());
 app.get('/location', async (req, res) => {
     try {
         console.log('Request received for /location');
+        
+        // Fetch location from Google Maps Geolocation API
         const response = await fetch(GOOGLE_MAPS_API_URL, { method: 'POST' });
         const data = await response.json();
-        console.log('Data received from Google Maps API:', data);
         const location = data.location;
 
         // Construct the Google Maps URL with the coordinates
         const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${location.lat},${location.lng}`;
         
-        // Redirect to Google Maps with the coordinates
-        res.redirect(googleMapsUrl);
+        // Send a redirection response to the client
+        res.redirect(302, googleMapsUrl);
     } catch (error) {
         console.error('Error fetching location:', error);
         res.status(500).json({ error: 'Failed to fetch location' });
